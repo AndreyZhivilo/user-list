@@ -13,11 +13,13 @@ export function UserCard({
 	login,
 	email,
 	addUser,
+	removeUser,
 }: {
 	name: string,
 	login: string,
 	email: string,
 	addUser?: ReactNode,
+	removeUser?: ReactNode,
 }) {
 	return (
 		<Card>
@@ -31,6 +33,7 @@ export function UserCard({
 			</CardContent>
 			<CardFooter>
 				{addUser}
+				{removeUser}
 			</CardFooter>
 		</Card>
 	)

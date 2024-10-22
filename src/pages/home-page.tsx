@@ -2,6 +2,7 @@ import { useGetUsersQuery } from '@/entities/user/api'
 import { UserCard } from '@/entities/user/ui/user-card'
 import { Layout } from './layout'
 import { AddUser } from '@/features/add-user'
+import { CardLayout } from '@/shared/ui/cards-layout'
 
 
 export function HomePage() {
@@ -11,7 +12,7 @@ export function HomePage() {
 	return (
 		<Layout>
 			<div className="container mx-auto">
-				<div className='grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
+				<CardLayout>
 					{data?.map(user => (
 						<UserCard
 							key={user.id}
@@ -21,7 +22,7 @@ export function HomePage() {
 							addUser={<AddUser user={user} />}
 						/>
 					))}
-				</div>
+				</CardLayout>
 			</div>
 		</Layout>
 
