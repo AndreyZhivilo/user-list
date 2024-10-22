@@ -1,10 +1,16 @@
+import './app/index.css'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import App from './app/App.tsx'
-import './app/index.css'
+import { StoreProvider } from './app/root-store.tsx'
+import { Routes } from './app/router.tsx'
+
+
+
 
 createRoot(document.getElementById('root')!).render(
 	<StrictMode>
-		<App />
+		<StoreProvider>
+			<Routes />
+		</StoreProvider>
 	</StrictMode>,
 )

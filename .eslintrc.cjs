@@ -36,8 +36,9 @@ module.exports = {
     "@typescript-eslint/no-explicit-any": "warn",
     "no-return-await": "off",
     "no-shadow": "off",
-    "react/require-default-props": "warn",
-		"react/react-in-jsx-scope": "off"
+    "react/require-default-props": "off",
+		"react/react-in-jsx-scope": "off",
+		"no-param-reassign": "off",
     },
 		    "settings": {
         "import/resolver": {
