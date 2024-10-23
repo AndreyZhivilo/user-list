@@ -29,7 +29,7 @@ export const userSlice = createSlice({
 				
 			})
     },
-		remove: (state, action: PayloadAction<number>) => {
+		remove: (state, action: PayloadAction<number | string>) => {
 			state.users = state.users.filter(user => user.id !== action.payload)
 		},
 		setSearch: (state, action: PayloadAction<string>) => {
@@ -41,7 +41,7 @@ export const userSlice = createSlice({
 		selectUserById: createSelector(
 			[
 				(state: UserStore) => state.users,
-				(state: UserStore, userId: number) => userId 
+				(_state: UserStore, userId: number) => userId 
 			],
 			(users, userId) => users.find(user => user.id === userId)
 			
@@ -59,18 +59,6 @@ export const userSlice = createSlice({
 		selectSearchString: (state: UserStore) => state.searchString
 	}
 })
-
-// export const selectUserById = createSelector(
-// 	[
-// 		(state: UserStore) => state.users,
-// 		(state: UserStore, userId: number) => userId 
-// 	],
-// 	(users, userId) => users.find(user => user.id === userId)
-	
-// );
-
-
-
 
 
 export const { add, remove, update, setSearch } = userSlice.actions

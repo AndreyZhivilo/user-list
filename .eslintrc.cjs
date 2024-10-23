@@ -39,6 +39,8 @@ module.exports = {
     "react/require-default-props": "off",
 		"react/react-in-jsx-scope": "off",
 		"no-param-reassign": "off",
+		"no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": ["error"]
     },
 		    "settings": {
         "import/resolver": {

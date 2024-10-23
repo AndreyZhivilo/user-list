@@ -1,5 +1,5 @@
 import { useGetUsersQuery } from '@/entities/user/api'
-import { UserCard } from '@/entities/user/ui/user-card'
+import { UserCard } from '@/entities/user/ui'
 import { Layout } from './layout'
 import { AddUser } from '@/features/add-user'
 import { CardLayout } from '@/shared/ui/cards-layout'

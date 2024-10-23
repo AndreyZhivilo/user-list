@@ -1,2 +1,12 @@
-export { userSlice, selectUsers, selectUserById, selectUsersBySearch, selectSearchString, setSearch, add, remove, update } from './user-store'
+export { 
+	userSlice, 
+	selectUsers, 
+	selectUserById, 
+	selectUsersBySearch, 
+	selectSearchString, 
+	setSearch, 
+	add, 
+	remove, 
+	update 
+} from './user-store'
 export type { User } from './types'
