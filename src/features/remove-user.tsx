@@ -6,7 +6,7 @@ import { Button } from "@/shared/ui/button"
 export function RemoveUser({ userId }: { userId: number }) {
 	const dispatch = useDispatch()
 	return (
-		<Button onClick={() => dispatch(remove(userId))}>
+		<Button variant='destructive' onClick={() => dispatch(remove(userId))}>
 			Удалить
 		</Button>
 	)

@@ -1,22 +1,15 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, createSelector } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import type { User } from './types'
 
 interface UserStore {
 	users: User[]
-	favoriteUsers: number[]
+	searchString: string
 }
 
 const initialState: UserStore = {
-	users: [
-		{
-		id: 1,
-		name: 'Vasya',
-		username: 'vasili45',
-		email: 'vasya@mail.ru'
-	}
-],
-	favoriteUsers: []
+	users: [],
+	searchString: ''
 }
 
 
@@ -38,16 +31,49 @@ export const userSlice = createSlice({
     },
 		remove: (state, action: PayloadAction<number>) => {
 			state.users = state.users.filter(user => user.id !== action.payload)
+		},
+		setSearch: (state, action: PayloadAction<string>) => {
+			state.searchString = action.payload
 		}
   },
 	selectors: {
-		selectUsers: (userStore: UserStore) => userStore.users
+		selectUsers: (state: UserStore) => state.users,
+		selectUserById: createSelector(
+			[
+				(state: UserStore) => state.users,
+				(state: UserStore, userId: number) => userId 
+			],
+			(users, userId) => users.find(user => user.id === userId)
+			
+		),
+		selectUsersBySearch: createSelector(
+			[
+				(state: UserStore) => state.users,
+				(state: UserStore) => state.searchString
+			],
+			(users, searchString) => {
+				if(!searchString) return users				
+				return users.filter(user => user.name.toLocaleLowerCase().includes(searchString.toLocaleLowerCase()))
+			}
+		),
+		selectSearchString: (state: UserStore) => state.searchString
 	}
 })
 
+// export const selectUserById = createSelector(
+// 	[
+// 		(state: UserStore) => state.users,
+// 		(state: UserStore, userId: number) => userId 
+// 	],
+// 	(users, userId) => users.find(user => user.id === userId)
+	
+// );
 
 
-export const { add, remove, update } = userSlice.actions
-export const { selectUsers } = userSlice.selectors
+
+
+
+export const { add, remove, update, setSearch } = userSlice.actions
+export const { selectUsers, selectUserById, selectUsersBySearch, selectSearchString} = userSlice.selectors
 
 

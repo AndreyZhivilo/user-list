@@ -9,7 +9,7 @@ export function AppHeader() {
 				<nav>
 					<ul className="flex items-center gap-4 text-white text-lg font-semibold">
 						<li><Link to={paths.HOME_PAGE}>Главная</Link></li>
-						<li><Link to={paths.USERS_PAGE}>Избранное</Link></li>
+						<li><Link to={`/${paths.USERS_PAGE}`}>Избранное</Link></li>
 					</ul>
 				</nav>
 			</div>

@@ -31,7 +31,7 @@ export function UserCard({
 			<CardContent>
 				{login} - {email}
 			</CardContent>
-			<CardFooter>
+			<CardFooter className="justify-end">
 				{addUser}
 				{removeUser}
 			</CardFooter>
