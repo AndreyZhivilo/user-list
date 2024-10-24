@@ -16,8 +16,8 @@ interface UserFormProps {
 export function UserForm({ onSubmit, initial, btnText }: UserFormProps) {
 
 	const schema = z.object({
-		name: z.string({ required_error: 'Вы забыли указать имя' }),
-		username: z.string({ required_error: 'Вы забыли указать логин' }),
+		name: z.string().min(1, { message: 'Вы забыли указать имя' }),
+		username: z.string().min(1, { message: 'Вы забыли указать логин' }),
 		email: z.string().email({ message: 'Неправильный email' })
 	})
 

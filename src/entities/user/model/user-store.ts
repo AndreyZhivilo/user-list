@@ -43,7 +43,7 @@ export const userSlice = createSlice({
 		selectUserById: createSelector(
 			[
 				(state: UserStore) => state.users,
-				(_state: UserStore, userId: number) => userId 
+				(_state: UserStore, userId: number | string) => userId 
 			],
 			(users, userId) => users.find(user => user.id === userId)
 			

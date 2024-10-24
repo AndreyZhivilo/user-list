@@ -6,8 +6,6 @@ import { AddUser } from '@/features/add-user'
 import { CardLayout } from '@/shared/ui/cards-layout'
 import { useToast } from "@/shared/lib"
 
-
-
 export function HomePage() {
 	const { isLoading, data, error } = useGetUsersQuery()
 	const { toast } = useToast()
@@ -34,7 +32,12 @@ export function HomePage() {
 							name={user.name}
 							login={user.username}
 							email={user.email}
-							addUser={<AddUser user={user} />}
+							addUser={<AddUser user={{
+								id: user.id,
+								name: user.name,
+								username: user.username,
+								email: user.email
+							}} />}
 						/>
 					))}
 				</CardLayout>
