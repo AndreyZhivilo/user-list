@@ -7,9 +7,12 @@ module.exports = {
         "eslint:recommended",
         "plugin:react/recommended",
         "plugin:@typescript-eslint/recommended",
+				'plugin:jest/recommended',
+    		'plugin:testing-library/react',
 				"airbnb",
 				"airbnb/hooks",
 				"prettier"
+				
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -21,7 +24,8 @@ module.exports = {
     },
     "plugins": [
         "react",
-        "@typescript-eslint"
+        "@typescript-eslint",
+				"import"
     ],
     "rules": {
 		"import/extensions": "off",
@@ -40,7 +44,10 @@ module.exports = {
 		"react/react-in-jsx-scope": "off",
 		"no-param-reassign": "off",
 		"no-unused-vars": "off",
-    "@typescript-eslint/no-unused-vars": ["error"]
+    "@typescript-eslint/no-unused-vars": ["error"],
+		'import/no-extraneous-dependencies': ['error', {
+      'devDependencies': ['**/*.test.ts', '**/*.test.tsx', '**/*.spec.ts', '**/*.spec.tsx', 'jest.setup.ts']
+    }]
     },
 		    "settings": {
         "import/resolver": {
