@@ -5,25 +5,15 @@ import {add, remove, update} from './user-store'
 import type {RootState} from '@/app/root-store'
 import type {User} from './types'
 
+
+// Save users to localStorage
+
 export const saveUsersToLocalStorage = createListenerMiddleware()
 
 type AppStartListening = TypedStartListening<RootState>
 
 const startAppListening =
   saveUsersToLocalStorage.startListening as AppStartListening
-
-const loadUsersFromStorage = (): User[] => {
-  try {
-    const serializedUsers = localStorage.getItem(LOCAL_STORAGE_KEY)
-    if (serializedUsers) {
-      return JSON.parse(serializedUsers)
-    }
-  } catch (err) {
-    console.error('Error loading users from localStorage:', err)
-		localStorage.setItem(LOCAL_STORAGE_KEY, '')
-  }
-  return []
-}
 
 startAppListening({
   matcher: isAnyOf(add, update, remove),
@@ -32,6 +22,20 @@ startAppListening({
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(state.users.users))
   }
 })
+
+// Load users from localStorage
+
+const loadUsersFromStorage = (): User[] => {
+  try {
+    const serializedUsers = localStorage.getItem(LOCAL_STORAGE_KEY)
+    if (serializedUsers) {
+      return JSON.parse(serializedUsers)
+    }
+  } catch {
+		localStorage.setItem(LOCAL_STORAGE_KEY, '')
+  }
+  return []
+}
 
 export const loadInitialState = () => {
   const users = loadUsersFromStorage()

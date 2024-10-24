@@ -30,10 +30,11 @@ export function UserCard({
 					{name}
 				</CardTitle>
 			</CardHeader>
-			<CardContent>
-				{login} - {email}
+			<CardContent className="flex flex-col">
+				<div><span className="font-bold">Login</span> - {login}</div>
+				<div><span className="font-bold">email</span> - {email}</div>
 			</CardContent>
-			<CardFooter className="justify-end">
+			<CardFooter className="justify-end gap-4">
 				{addUser}
 				{removeUser}
 				{updateUser}
