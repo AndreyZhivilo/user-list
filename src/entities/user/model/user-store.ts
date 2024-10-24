@@ -1,6 +1,8 @@
 import { createSlice, createSelector } from '@reduxjs/toolkit'
-import type { PayloadAction } from '@reduxjs/toolkit'
+import type { PayloadAction  } from '@reduxjs/toolkit'
 import type { User } from './types'
+
+
 
 interface UserStore {
 	users: User[]
@@ -57,7 +59,7 @@ export const userSlice = createSlice({
 			}
 		),
 		selectSearchString: (state: UserStore) => state.searchString
-	}
+	},
 })
 
 

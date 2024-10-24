@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit'
 import { Provider } from 'react-redux'
 import { ReactNode } from 'react'
 import { setupListeners } from '@reduxjs/toolkit/query/react'
-import { userSlice } from '@/entities/user/model'
+import { userSlice, saveUsersToLocalStorage, loadInitialState } from '@/entities/user/model'
 import { usersApi } from '@/entities/user/api'
 
 export const store = configureStore({
@@ -10,9 +10,9 @@ export const store = configureStore({
 		users: userSlice.reducer,
 		[usersApi.reducerPath]: usersApi.reducer
 	},
-
+	preloadedState: loadInitialState(),
 	middleware: (getDefaultMiddleware) =>
-		getDefaultMiddleware().concat(usersApi.middleware),
+		getDefaultMiddleware().prepend(saveUsersToLocalStorage.middleware).concat(usersApi.middleware),
 })
 
 setupListeners(store.dispatch)
