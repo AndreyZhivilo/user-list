@@ -27,7 +27,7 @@ export function UsersPage() {
 						/>)}
 					</CardLayout>
 				}
-				<CreateUser className="absolute bottom-10 right-0" />
+				<CreateUser className="fixed bottom-10 right-10 z-50 bg-white md:right-0 md:absolute" />
 			</div>
 		</Layout>
 	)

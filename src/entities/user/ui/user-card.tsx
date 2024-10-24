@@ -24,17 +24,17 @@ export function UserCard({
 	updateUser?: ReactNode,
 }) {
 	return (
-		<Card>
+		<Card className="flex flex-col">
 			<CardHeader>
 				<CardTitle className="text-2xl">
 					{name}
 				</CardTitle>
 			</CardHeader>
-			<CardContent className="flex flex-col">
+			<CardContent className="flex flex-col flex-grow">
 				<div><span className="font-bold">Login</span> - {login}</div>
 				<div><span className="font-bold">email</span> - {email}</div>
 			</CardContent>
-			<CardFooter className="justify-end gap-4">
+			<CardFooter className="justify-end gap-4 items-end">
 				{addUser}
 				{removeUser}
 				{updateUser}
